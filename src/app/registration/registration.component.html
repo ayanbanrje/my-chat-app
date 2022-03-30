@@ -1,33 +1,32 @@
-<form #userRegistration="ngForm">
-    {{ userRegistration.value | json }}
-    <hr>
-    {{ preData | json }} , Form Validation : {{userRegistration.form.invalid}}
+<form #userRegistration="ngForm" (ngSubmit)="doRegister()">
+    <div class="alert alert-danger text-center" *ngIf="errMsg">{{errMsg}}</div>
+    <div class="alert alert-success text-center" *ngIf="succMsg">{{succMsg}}</div>
     <div class="container">
-      <h1>Register</h1>
+      <h1>Register -- ayan</h1>
       <p>Please fill in this form to create an account.</p>
       <hr>
   
       <label for="name"><b>Name</b></label>
-      <input type="text" placeholder="Enter Name" [class.is-invalid]="name.errors" name="name" #name="ngModel" id="name" required [(ngModel)]="preData.name">
+      <input type="text" placeholder="Enter Name" [class.is-invalid]="name.errors" name="name" #name="ngModel" id="name" required [(ngModel)]="UserModel.name">
 
       <label for="email"><b>Email</b></label>
-      <input type="text" [class.is-invalid]="email.errors" placeholder="Enter Email" name="email" #email="ngModel" id="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required [(ngModel)]="preData.email">
+      <input type="text" [class.is-invalid]="email.errors" placeholder="Enter Email" name="email" #email="ngModel" id="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required [(ngModel)]="UserModel.email">
 
       <label for="email"><b>Phone Number</b></label>
-      <input type="text" placeholder="Enter Phone Number" name="phonenumber" id="phonenumber" required [(ngModel)]="preData.phonenumber">
+      <input type="text" placeholder="Enter Phone Number" name="phonenumber" id="phonenumber" required [(ngModel)]="UserModel.phonenumber">
 
       <label for="email"><b>Address</b></label>
-      <textarea name="address" id="address" [(ngModel)]="preData.address"></textarea>
+      <textarea name="address" id="address" [(ngModel)]="UserModel.address"></textarea>
     
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" id="psw" required [(ngModel)]="preData.psw">
+      <input type="password" placeholder="Enter Password" name="psw" id="psw" required [(ngModel)]="UserModel.password" (keyup)="checkConfirmPassword()">
   
       <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required [(ngModel)]="confirmPwd">
+      <input type="password" placeholder="Repeat Password" (keyup)="checkConfirmPassword()" name="psw-repeat" id="psw-repeat" required [(ngModel)]="UserModel.confPassword">
       <hr>
   
-      <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-      <button [disabled]="userRegistration.form.invalid" type="submit" class="btn btn-info registerbtn">Register</button>
+      <!-- <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p> -->
+      <button [disabled]="userRegistration.form.invalid || dissable " type="submit" class="btn btn-info registerbtn">Register</button>
     </div>
   
     <div class="container signin">

@@ -3,19 +3,22 @@ export class Userdata {
     email: string;
     phonenumber: number;
     address: string;
-    psw: string;
+    password: string;
+    confPassword : string;
 
     constructor(
         name : string,
         email : string,
         phonenumber: number,
         address: string,
-        psw: string
+        password: string,
+        confPassword : string
     ){
         this.name = name;
         this.email = email;
         this.phonenumber = phonenumber;
         this.address = address;
-        this.psw = psw;
+        this.password = password;
+        this.confPassword = confPassword;
     }
 }
