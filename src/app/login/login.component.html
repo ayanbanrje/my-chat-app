@@ -1,0 +1,30 @@
+<form #userLogin="ngForm" (ngSubmit)="doLogin()">
+  <div class="alert alert-danger text-center" *ngIf="errMsg">{{errMsg}}</div>
+    <div class="alert alert-success text-center" *ngIf="succMsg">{{succMsg}}</div>
+
+    <div class="container">
+      <h1>LogIn Page</h1>
+      <hr>
+
+    <!-- Email input -->
+    <label for="email"><b>Email</b></label>
+      <input type="text" [class.is-invalid]="email.errors" placeholder="Enter Email" name="email" #email="ngModel" id="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required [(ngModel)]="UserModel.email">
+  
+    <!-- Password input -->
+    <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" id="psw" required [(ngModel)]="UserModel.password">
+  
+    <!-- Submit button -->
+    <!--<button type="button" class="btn btn-primary btn-block mb-4">Sign in</button> -->
+    <button [disabled]="userLogin.form.invalid" type="submit" class="btn btn-info registerbtn">Login</button>
+  
+    <!-- Register buttons -->
+    <div class="text-center">
+      <p>Not a member? <a [routerLink]="['/registration']">Register</a></p>
+    
+     
+    </div>
+    </div>
+    
+  </form>
+

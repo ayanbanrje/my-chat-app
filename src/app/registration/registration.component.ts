@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Userdata } from "../models/userdata";
 import { UserService } from "../service/user.service";
 
@@ -14,7 +15,8 @@ export class RegistrationComponent implements OnInit {
   succMsg = false;
   errMsg = false;
   constructor(
-    private _userService : UserService
+    private _userService : UserService,
+    private router: Router
   ) { 
     this.checkConfirmPassword()
   }
@@ -47,6 +49,7 @@ export class RegistrationComponent implements OnInit {
       next: (data: any) => {
         this.succMsg = data.message;
         self.errMsg = false;
+        this.router.navigate(['login'])
       },
       error(error) {
         if (error.error.message) {
@@ -58,7 +61,8 @@ export class RegistrationComponent implements OnInit {
       },
       complete() {
         console.log("Process is done");
-      }
+      },
+      
     });
 
   }

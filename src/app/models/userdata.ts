@@ -22,3 +22,25 @@ export class Userdata {
         this.confPassword = confPassword;
     }
 }
+
+export class Logindata {
+    
+    email: string;
+    
+    password: string;
+    
+
+    constructor(
+       
+        email : string,
+        
+        password: string,
+       
+    ){
+       
+        this.email = email;
+        
+        this.password = password;
+        
+    }
+}
