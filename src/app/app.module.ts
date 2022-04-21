@@ -11,13 +11,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserService } from './service/user.service';
 import { AuthGuard } from './service/auth.guard';
 import { TokenInterceptorService } from './service/token-interceptor.service';
+import { EditListComponent } from './edit-list/edit-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    EditListComponent
   ],
   imports: [
     BrowserModule,
